@@ -1,0 +1,6 @@
+target/
+hotel.db
+*.class
+.vscode/
+*.iml
+.DS_Store
