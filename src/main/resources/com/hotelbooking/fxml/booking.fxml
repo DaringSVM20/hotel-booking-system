@@ -8,70 +8,87 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Button?>
 
-<VBox spacing="20" style="-fx-padding: 30; -fx-background-color: #f0f4f8;"
+<VBox spacing="20" style="-fx-padding: 30; -fx-background-color: #FEFDDF;"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.hotelbooking.controller.BookingController">
 
     <Label text="New Booking"
-           style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+           style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #3B2A1A; -fx-font-family: Georgia;"/>
 
     <Label text="Guest Details"
-           style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+           style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #E87F24; -fx-font-family: Georgia;"/>
 
     <HBox spacing="15">
         <VBox spacing="5">
-            <Label text="Full Name" style="-fx-text-fill: #555;"/>
+            <HBox spacing="3">
+                <Label text="Full Name" styleClass="muted-label"/>
+                <Label text=" *" style="-fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+            </HBox>
             <TextField fx:id="guestNameField" promptText="Enter guest name"
                        style="-fx-pref-width: 200;"/>
         </VBox>
         <VBox spacing="5">
-            <Label text="Phone" style="-fx-text-fill: #555;"/>
+            <HBox spacing="3">
+                <Label text="Phone" styleClass="muted-label"/>
+                <Label text=" *" style="-fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+            </HBox>
             <TextField fx:id="guestPhoneField" promptText="Enter phone number"
                        style="-fx-pref-width: 200;"/>
         </VBox>
         <VBox spacing="5">
-            <Label text="Email" style="-fx-text-fill: #555;"/>
+            <HBox spacing="3">
+                <Label text="Email" styleClass="muted-label"/>
+                <Label text=" *" style="-fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+            </HBox>
             <TextField fx:id="guestEmailField" promptText="Enter email"
                        style="-fx-pref-width: 200;"/>
         </VBox>
     </HBox>
 
     <Label text="Booking Details"
-           style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+           style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #E87F24; -fx-font-family: Georgia;"/>
 
     <HBox spacing="15">
         <VBox spacing="5">
-            <Label text="Select Room" style="-fx-text-fill: #555;"/>
+            <HBox spacing="3">
+                <Label text="Select Room" styleClass="muted-label"/>
+                <Label text=" *" style="-fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+            </HBox>
             <ComboBox fx:id="roomComboBox" promptText="Choose a room"
                       style="-fx-pref-width: 200;"/>
         </VBox>
         <VBox spacing="5">
-            <Label text="Check-In Date" style="-fx-text-fill: #555;"/>
+            <HBox spacing="3">
+                <Label text="Check-In Date" styleClass="muted-label"/>
+                <Label text=" *" style="-fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+            </HBox>
             <DatePicker fx:id="checkInDate" style="-fx-pref-width: 200;"/>
         </VBox>
         <VBox spacing="5">
-            <Label text="Check-Out Date" style="-fx-text-fill: #555;"/>
+            <HBox spacing="3">
+                <Label text="Check-Out Date" styleClass="muted-label"/>
+                <Label text=" *" style="-fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+            </HBox>
             <DatePicker fx:id="checkOutDate" style="-fx-pref-width: 200;"/>
         </VBox>
     </HBox>
 
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Estimated Total:"
-               style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+               style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #3B2A1A;"/>
         <Label fx:id="totalPriceLabel" text="Rs.0.00"
-               style="-fx-font-size: 14; -fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+               style="-fx-font-size: 14; -fx-text-fill: #E87F24; -fx-font-weight: bold; -fx-font-family: Georgia;"/>
     </HBox>
 
     <HBox spacing="15">
-        <Button text="Confirm Booking" onAction="#handleBooking"
-                style="-fx-background-color: #2ecc71; -fx-text-fill: white;
-                       -fx-font-size: 14; -fx-padding: 10 20; -fx-cursor: hand;"/>
-        <Button text="Cancel" onAction="#handleCancel"
-                style="-fx-background-color: #e74c3c; -fx-text-fill: white;
-                       -fx-font-size: 14; -fx-padding: 10 20; -fx-cursor: hand;"/>
+        <Button text="Confirm Booking" onAction="#handleBooking" styleClass="btn-success"/>
+        <Button text="Cancel"          onAction="#handleCancel"  styleClass="btn-danger"/>
     </HBox>
 
-    <Label fx:id="statusLabel" style="-fx-font-size: 13;"/>
+    <Label text="* All fields are mandatory"
+           style="-fx-text-fill: #C0392B; -fx-font-size: 11; -fx-font-style: italic;"/>
+
+    <Label fx:id="statusLabel" styleClass="error-label"/>
 
 </VBox>

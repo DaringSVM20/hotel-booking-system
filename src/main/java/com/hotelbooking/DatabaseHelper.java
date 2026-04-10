@@ -70,6 +70,8 @@ public class DatabaseHelper {
                 stmt.execute("INSERT INTO users (username, password, role) VALUES ('admin', 'admin123', 'ADMIN')");
                 stmt.execute("INSERT INTO users (username, password, role) VALUES ('manager', 'manager123', 'MANAGER')");
                 stmt.execute("INSERT INTO users (username, password, role) VALUES ('staff', 'staff123', 'STAFF')");
+                stmt.execute("INSERT INTO users (username, password, role) VALUES ('guest1', 'guest1', 'GUEST')");
+                stmt.execute("INSERT INTO users (username, password, role) VALUES ('guest2', 'guest2', 'GUEST')");
             }
     
         } catch (SQLException e) {

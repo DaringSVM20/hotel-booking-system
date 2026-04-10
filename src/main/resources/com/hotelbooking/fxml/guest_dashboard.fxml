@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.hotelbooking.controller.GuestDashboardController"
+            style="-fx-background-color: #FEFDDF;">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="nav-bar">
+            <Label text="🏨" style="-fx-font-size: 20; -fx-text-fill: #FFC81E;"/>
+            <Label text="Hotel Booking System" styleClass="nav-title"/>
+            <Label fx:id="welcomeLabel" style="-fx-text-fill: #FFC81E; -fx-font-size: 13;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="New Booking" onAction="#openBooking" styleClass="btn-primary"/>
+            <Button text="Logout" onAction="#handleLogout" styleClass="btn-danger"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+
+            <!-- STAT CARDS -->
+            <HBox spacing="20">
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-card-blue">
+                    <Label fx:id="totalRoomsLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Total Rooms" styleClass="stat-text"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-card-green">
+                    <Label fx:id="availableRoomsLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Available Rooms" styleClass="stat-text"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-card-orange">
+                    <Label fx:id="myBookingsLabel" text="0" styleClass="stat-number"/>
+                    <Label text="My Bookings" styleClass="stat-text"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-card-red">
+                    <Label fx:id="occupiedRoomsLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Occupied Rooms" styleClass="stat-text"/>
+                </VBox>
+            </HBox>
+
+            <!-- TABLE HEADER ROW -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Available Rooms"
+                    style="-fx-font-size: 16; -fx-font-weight: bold;
+                            -fx-text-fill: #E87F24; -fx-font-family: Georgia;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="⟳  Refresh" onAction="#handleRefresh"
+                        styleClass="btn-info"/>
+            </HBox>
+
+            <TableView fx:id="roomsTable" VBox.vgrow="ALWAYS"
+                    style="-fx-pref-height: 400;">
+                <columns>
+                    <TableColumn fx:id="roomNumberCol" text="Room No."    prefWidth="140"/>
+                    <TableColumn fx:id="roomTypeCol"   text="Type"        prefWidth="180"/>
+                    <TableColumn fx:id="roomPriceCol"  text="Price/Night" prefWidth="180"/>
+                </columns>
+            </TableView>
+
+            <Label text="Select a room above and click New Booking to make a reservation."
+                style="-fx-text-fill: #7A6652; -fx-font-size: 12; -fx-font-style: italic;"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>

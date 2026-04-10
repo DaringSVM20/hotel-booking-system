@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import com.hotelbooking.dao.BookingDAO;
+import com.hotelbooking.dao.GuestDAO;
 import com.hotelbooking.dao.RoomDAO;
 import com.hotelbooking.models.Booking;
+import com.hotelbooking.models.Guest;
 import com.hotelbooking.models.Room;
 
 import javafx.collections.FXCollections;
@@ -39,6 +41,12 @@ public class DashboardController {
     @FXML private TableColumn<Booking, String> bookingCheckOutCol;
     @FXML private TableColumn<Booking, String> bookingStatusCol;
 
+    @FXML private TableView<Guest> guestsTable;
+    @FXML private TableColumn<Guest, Integer> guestIdCol;
+    @FXML private TableColumn<Guest, String> guestNameCol;
+    @FXML private TableColumn<Guest, String> guestPhoneCol;
+    @FXML private TableColumn<Guest, String> guestEmailCol;
+
     @FXML private Label cancelStatusLabel;
 
     private RoomDAO roomDAO = new RoomDAO();
@@ -56,6 +64,15 @@ public class DashboardController {
         roomStatusCol.setCellValueFactory(data ->
             new javafx.beans.property.SimpleStringProperty(
                 data.getValue().isAvailable() ? "Available" : "Occupied"));
+
+        guestIdCol.setCellValueFactory(d ->
+            new javafx.beans.property.SimpleObjectProperty<>(d.getValue().getId()));
+        guestNameCol.setCellValueFactory(d ->
+            new javafx.beans.property.SimpleStringProperty(d.getValue().getName()));
+        guestPhoneCol.setCellValueFactory(d ->
+            new javafx.beans.property.SimpleStringProperty(d.getValue().getPhone()));
+        guestEmailCol.setCellValueFactory(d ->
+            new javafx.beans.property.SimpleStringProperty(d.getValue().getEmail()));
 
         // Bookings table columns
         bookingIdCol.setCellValueFactory(data ->
@@ -89,6 +106,9 @@ public class DashboardController {
         List<Booking> bookings = bookingDAO.getAllBookings();
         totalBookingsLabel.setText(String.valueOf(bookings.size()));
         bookingsTable.setItems(FXCollections.observableArrayList(bookings));
+
+        GuestDAO guestDAO = new GuestDAO();
+        guestsTable.setItems(FXCollections.observableArrayList(guestDAO.getAllGuests()));
     }
 
     @FXML

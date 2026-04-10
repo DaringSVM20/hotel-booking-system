@@ -6,19 +6,17 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Button?>
 
-<VBox spacing="15" style="-fx-padding: 40; -fx-background-color: white;"
+<VBox spacing="15" style="-fx-padding: 40; -fx-background-color: #FEFDDF;"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.hotelbooking.controller.BillingController">
 
     <!-- HEADER -->
     <HBox alignment="CENTER">
-        <Label text="🏨 Hotel Booking System"
-               style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+    <Label text="🏨 Hotel Booking System" styleClass="invoice-title"/>
     </HBox>
     <HBox alignment="CENTER">
-        <Label text="INVOICE"
-               style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+        <Label text="INVOICE" styleClass="invoice-subtitle"/>
     </HBox>
 
     <Separator/>
@@ -68,25 +66,28 @@
     <Separator/>
 
     <HBox spacing="10">
-        <Label text="GRAND TOTAL:"
-               style="-fx-font-weight: bold; -fx-font-size: 16; -fx-pref-width: 160;
-                      -fx-text-fill: #2c3e50;"/>
-        <Label fx:id="grandTotalLabel" text="Rs.0.00"
-               style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+        <Label text="GRAND TOTAL:" styleClass="grand-total-label"/>
+        <Label fx:id="grandTotalLabel" text="Rs.0.00" styleClass="grand-total-value"/>
     </HBox>
 
     <Separator/>
 
     <!-- BUTTONS -->
     <HBox spacing="15" alignment="CENTER">
-        <Button text="Close" onAction="#handleClose"
-                style="-fx-background-color: #e74c3c; -fx-text-fill: white;
-                       -fx-font-size: 13; -fx-padding: 8 20; -fx-cursor: hand;"/>
+        <Button text="Download PDF" onAction="#handleDownloadPDF" styleClass="btn-success"/>
+        <Button text="Close" onAction="#handleClose" styleClass="btn-danger"/>
     </HBox>
 
-    <HBox alignment="CENTER">
+    <!-- <HBox alignment="CENTER">
         <Label text="Thank you for choosing us!"
                style="-fx-text-fill: #95a5a6; -fx-font-size: 12;"/>
-    </HBox>
+    </HBox> -->
+
+    <!-- <HBox spacing="15" alignment="CENTER">
+        <Button text="Download PDF" onAction="#handleDownloadPDF"
+                styleClass="btn-success"/>
+        <Button text="Close" onAction="#handleClose"
+                styleClass="btn-danger"/>
+    </HBox> -->
 
 </VBox>

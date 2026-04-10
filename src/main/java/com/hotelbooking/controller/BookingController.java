@@ -124,7 +124,10 @@ public class BookingController {
                     getClass().getResource("/com/hotelbooking/fxml/billing.fxml"));
                 Stage billingStage = new Stage();
                 billingStage.setTitle("Invoice");
-                billingStage.setScene(new Scene(loader.load(), 500, 600));
+                Scene billingScene = new Scene(loader.load(), 500, 600);
+                billingScene.getStylesheets().add(
+                    getClass().getResource("/com/hotelbooking/css/styles.css").toExternalForm());
+                billingStage.setScene(billingScene);
 
                 BillingController bc = loader.getController();
                 bc.setInvoiceData(invoice,

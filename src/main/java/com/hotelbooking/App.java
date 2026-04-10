@@ -13,12 +13,15 @@ public class App extends Application {
         DatabaseHelper.initializeDatabase();
         FXMLLoader fxmlLoader = new FXMLLoader(
             App.class.getResource("/com/hotelbooking/fxml/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 680);
+            stage.setMinWidth(800);
+            stage.setMinHeight(600);
         // Load CSS globally
         scene.getStylesheets().add(
             getClass().getResource("/com/hotelbooking/css/styles.css").toExternalForm());
         stage.setTitle("Hotel Booking System");
         stage.setScene(scene);
+        // stage.setMaximized(true);
         stage.show();
     }
 

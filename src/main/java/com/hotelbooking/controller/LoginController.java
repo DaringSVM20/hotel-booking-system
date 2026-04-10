@@ -34,14 +34,28 @@ public class LoginController {
         if (userDAO.validateUser(username, password)) {
             String role = userDAO.getUserRole(username);
             try {
-                FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/hotelbooking/fxml/dashboard.fxml"));
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                Scene scene = new Scene(loader.load(), 900, 600);
-                scene.getStylesheets().add(
-                    getClass().getResource("/com/hotelbooking/css/styles.css").toExternalForm());
+                Scene scene;
+
+                if (role.equals("GUEST")) {
+                    FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/com/hotelbooking/fxml/guest_dashboard.fxml"));
+                    scene = new Scene(loader.load(), 1000, 680);
+                    scene.getStylesheets().add(
+                        getClass().getResource("/com/hotelbooking/css/styles.css").toExternalForm());
+                    GuestDashboardController gc = loader.getController();
+                    gc.setUsername(username);
+                    stage.setTitle("Hotel Booking System - Guest");
+                } else {
+                    FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("/com/hotelbooking/fxml/dashboard.fxml"));
+                    scene = new Scene(loader.load(), 1000, 680);
+                    scene.getStylesheets().add(
+                        getClass().getResource("/com/hotelbooking/css/styles.css").toExternalForm());
+                    stage.setTitle("Dashboard - " + username + " (" + role + ")");
+                }
+
                 stage.setScene(scene);
-                stage.setTitle("Dashboard — " + username + " (" + role + ")");
             } catch (IOException e) {
                 e.printStackTrace();
             }
